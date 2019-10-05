@@ -1,0 +1,28 @@
+<!-- Con [ngClass] vamos a poder controlar la clase del elemento Html desde el TS -->
+<div [ngClass]="alerta" class="alert" role="alert">
+    This is a primary alert—check it out!
+</div>
+
+<button type="button" class="btn btn-info" (click)="alerta='alert-info'">Info</button>
+<button type="button" class="btn btn-success" (click)="alerta='alert-success'">Success</button>
+
+<br><br>
+
+<!-- En este [ngClass] se controla la clase del elemento con un booleano -->
+<h3 [ngClass]="{ 'text-danger':propiedades.danger, 'text-info': !propiedades.danger }">
+    HOLA MUNDO 2
+</h3>
+
+<button type="button" class="btn btn-danger" (click)="propiedades.danger = !propiedades.danger" [ngClass]="{ 'btn-danger':propiedades.danger, 'btn-info':!propiedades.danger}">
+    Cambiar
+</button>
+
+<br><br>
+
+<h3>Proceso Asíncrono</h3>
+<!-- Tambien se pueden controlar otras caracteristicas desde el TS con los corchetes como en "ngClass" -->
+<button class="btn btn-primary" type="button" name="button" (click)="ejecutar()" [disabled]="loading">
+        <i [ngClass]=" { 'fa-save':!loading, 'fa-refresh fa-spin':loading} " class="fa"></i>
+        <span *ngIf="!loading"> Guardar cambios</span>
+        <span *ngIf="loading"> Espere por favor</span>
+</button>
